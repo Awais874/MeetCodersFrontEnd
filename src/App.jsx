@@ -1,25 +1,33 @@
 import { useState } from "react";
 import './index.css';
-import NavBar from "./NavBar";
+import NavBar from "./components/NavBar";
 import { BrowserRouter,Route,Routes } from "react-router-dom";
-import Login from "./Login";
-import Body from "./Body";
-import Profile from "./Profile";
+import Login from "./components/Login";
+import Body from "./components/Body";
+import Profile from "./components/Profile";
+import { Provider } from "react-redux";
+import appStore from "./utils/appStore";
+import Feeds from "./components/Feeds";
+import Connections from "./components/Connections";
 function App() {
   const [count, setCount] = useState(0);
 
   return (
     <>
+    <Provider store = {appStore}>
 <BrowserRouter basename="/">
 <Routes>
   <Route path = "/" element={<Body/>}>
-  <Route path = "/Login" element={<Login/>}/>
+  <Route path = "/feed" element ={<Feeds/>}/>
+  <Route path = "/login" element={<Login/>}/>
+  <Route path = "Profile" element={<Profile/>}/>
   <Route path = "/About" element={<Profile/>}/>
+   <Route path = "/connections" element={<Connections/>}/>
   </Route>
 </Routes>
 
 </BrowserRouter>
-   
+  </Provider> 
   </>
   );
 }
