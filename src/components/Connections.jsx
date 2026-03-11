@@ -45,9 +45,9 @@ fetchConnections();
     {connections.map((connection)=>{
 
 
-const {firstName,lastName,photoUrl,age,gender,about } =connection;
+const {_id,firstName,lastName,photoUrl,age,gender,about } =connection;
 return (
-<div className='flex m-4 p-4 rounded-lg bg-base-300 w-1/2 mx-auto'>
+<div key={_id} className='flex m-4 p-4 rounded-lg bg-base-300 w-1/2 mx-auto'>
 <div>
 
 <img alt="photo" className='w-20 h-20 rounded-full' src={photoUrl} />

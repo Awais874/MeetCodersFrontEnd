@@ -60,6 +60,11 @@ console.log(err);
           Connections
           </Link>
           </li>
+          <li>
+          <Link to ="/requests">
+          requests
+          </Link>
+          </li>
         <li>
           <a onClick={handleLogout}>Logout</a>
           
