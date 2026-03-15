@@ -16,8 +16,8 @@ if (feed) return
 try{
 const res = await axios.get(BASE_URL+"feed",{withCredentials:true,});
 
-dispatch(addfeed(res.data));
-
+dispatch(addfeed(res.data.data));
+console.log("res feed data is ",res);
 }
 catch(err)
 {
@@ -32,12 +32,14 @@ useEffect(()=>{
 getfeed();
 },[])
 
+if(!feed)
+return;
 
-
+if(feed.length <=0) return <h1>No new users !/feeds</h1>
   return feed &&(
     <div>
    
-     <Usercard user = {feed?.data?.[0]} />
+     <Usercard user = {feed?.[0]} />
     </div>
   )
 }

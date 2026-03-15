@@ -33,7 +33,7 @@ console.log(err);
     <div>
       <div className="navbar bg-base-300 shadow-sm">
   <div className="flex-1">
-     <Link to ="/Profile" className = "btn btn-ghost text-xl"> MeetCoders</Link>
+     <Link to ="/feed" className = "btn btn-ghost text-xl"> MeetCoders</Link>
   </div>
   <div className="flex-none gap-2">
     {console.log("user ye hai", user)}

@@ -11,6 +11,8 @@ const requests = useSelector((store)=>store.requests)
 
 const reviewRequest =async(status,_id) => {
 
+   console.log("status:", status);
+    console.log("requestId:", _id);
 try{
 
 const res = await axios.post(BASE_URL + "request/review/"+ status + "/"+_id , {}, {withCredentials:true})
@@ -20,7 +22,9 @@ dispatch(removeRequest(_id));
 
 
 catch(err){
-console.log(err.message)
+ console.log("Error message:", err.message);
+  console.log("Status code:", err?.response?.status);
+  console.log("Error data:", err?.response?.data);
 
 }
 
@@ -61,9 +65,10 @@ fetchRequests();
       <h1 className='text-bold text-3xl'>Requests</h1>
     
     {requests.map((requests)=>{
+const { _id, fromUserId } = requests;
+const { firstName, lastName, photoUrl, age, gender, about } = fromUserId || {};
 
-
-const {_id,firstName,lastName,photoUrl,age,gender,about } =requests;
+// const {_id,firstName,lastName,photoUrl,age,gender,about } =requests;
 return (
 <div key={_id} className='flex m-4 p-4 rounded-lg bg-base-300 w-1/2 mx-auto'>
 <div>
@@ -75,7 +80,7 @@ return (
 <div className='text-left mx-4'>
     <h2 className='front-bold text-xl'>
         {firstName+" " +lastName}
-
+{console.log("Ye hai first name aur last name",firstName,lastName )}
         </h2> 
 {age && gender && <p>{age + " " + gender}</p>}
 <button onClick={()=>reviewRequest("accepted",requests._id)} className="btn btn-primary">Accept</button>
